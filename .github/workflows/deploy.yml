@@ -19,9 +19,6 @@ jobs:
           php-version: '8.2'
           extensions: mbstring, bcmath, pdo_mysql
 
-      - name: Install Dependencies
-        run: composer install --optimize-autoloader --no-dev
-
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
@@ -29,20 +26,27 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /var/www/project
-            git pull origin ${{ github.ref_name }}
+            if [ "${{ github.ref_name }}" = "develop" ]; then
+              cd /var/www/dexora-staging
+              git pull origin develop
+            elif [ "${{ github.ref_name }}" = "main" ]; then
+              cd /var/www/dexora-production
+              git pull origin main
+            fi
+
             composer install --no-dev --optimize-autoloader
             php artisan migrate --force
             php artisan config:cache
             php artisan route:cache
             php artisan view:cache
 
+      # Uncomment for Slack notifications
       # - name: Notify Slack
       #   uses: slackapi/slack-github-action@v1.23.0
       #   with:
       #     payload: |
       #       {
-      #         "text": "Deployment to *${{ github.ref_name }}* succeeded."
+      #         "text": "✅ Deployment to *${{ github.ref_name }}* succeeded."
       #       }
       #   env:
       #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
