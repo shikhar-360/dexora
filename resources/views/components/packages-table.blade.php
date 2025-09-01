@@ -4,7 +4,7 @@
         <thead>
             <tr class="bg-white bg-opacity-10 text-white">
                 <th class="whitespace-nowrap text-sm md:text-base font-normal px-4 py-3 cursor-pointer bg-[#34333a] first:rounded-tl-md last:rounded-tr-md">Sr No.</th>
-                <th class="whitespace-nowrap text-sm md:text-base font-normal px-4 py-3 cursor-pointer bg-[#34333a] first:rounded-tl-md last:rounded-tr-md">Amount In RTX</th>
+                <th class="whitespace-nowrap text-sm md:text-base font-normal px-4 py-3 cursor-pointer bg-[#34333a] first:rounded-tl-md last:rounded-tr-md">Amount In {{ config('app.currency_name') }}</th>
                 <th class="whitespace-nowrap text-sm md:text-base font-normal px-4 py-3 cursor-pointer bg-[#34333a] first:rounded-tl-md last:rounded-tr-md">Amount In $</th>
                 <th class="whitespace-nowrap text-sm md:text-base font-normal px-4 py-3 cursor-pointer bg-[#34333a] first:rounded-tl-md last:rounded-tr-md">Stake</th>
                 <th class="whitespace-nowrap text-sm md:text-base font-normal px-4 py-3 cursor-pointer bg-[#34333a] first:rounded-tl-md last:rounded-tr-md">Transaction Hash</th>
@@ -16,7 +16,7 @@
             @foreach ($data['my_packages'] as $key => $value)
             <tr class="border-b border-white/5 hover:bg-[#34333a]/20">
                 <td class="whitespace-nowrap px-4 py-4 text-sm md:text-base font-light leading-none text-gray-400">{{ $key + 1 }}</td>
-                <td class="whitespace-nowrap px-4 py-4 text-sm md:text-base font-light leading-none text-gray-400">{{ number_format($value['amount'], 2) }} RTX</td>
+                <td class="whitespace-nowrap px-4 py-4 text-sm md:text-base font-light leading-none text-gray-400">{{ number_format($value['amount'], 2) }} {{ config('app.currency_name') }}</td>
                 <td class="whitespace-nowrap px-4 py-4 text-sm md:text-base font-light leading-none text-gray-400">${{ number_format($value['amount'] * $data['rtxPrice'], 2) }}</td>
                 <td class="whitespace-nowrap px-4 py-4 text-sm md:text-base font-light leading-none text-gray-400">{{ $value['package_id'] == 1 ? "Stake" : ($value['package_id'] == 2 ? "LP Bond" : "Stable Bond"); }}</td>
                 <td class="whitespace-nowrap px-4 py-4 text-sm md:text-base font-light leading-none text-gray-400">

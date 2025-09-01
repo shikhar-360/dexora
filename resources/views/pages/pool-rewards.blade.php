@@ -65,11 +65,11 @@
                     <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-white/80 text-sm">Current Pool</span>
-                            <span class="text-white font-semibold">{{$data['daily_pool']}} RTX</span>
+                            <span class="text-white font-semibold">{{$data['daily_pool']}}  {{ config('app.currency_name') }}</span>
                         </div>
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-white/80 text-sm">Your Collected</span>
-                            <span class="text-green-300 font-semibold">{{$data['claim_daily_pool_amount']}} RTX</span>
+                            <span class="text-green-300 font-semibold">{{$data['claim_daily_pool_amount']}} {{ config('app.currency_name') }}</span>
                         </div>
                     </div>
                 </div>
@@ -89,11 +89,11 @@
                     <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-white/80 text-sm">Current Pool</span>
-                            <span class="text-white font-semibold">{{$data['monthly_pool']}} RTX</span>
+                            <span class="text-white font-semibold">{{$data['monthly_pool']}} {{ config('app.currency_name') }}</span>
                         </div>
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-white/80 text-sm">Your Collected</span>
-                            <span class="text-green-300 font-semibold">{{$data['claim_monthly_pool_amount']}} RTX</span>
+                            <span class="text-green-300 font-semibold">{{$data['claim_monthly_pool_amount']}} {{ config('app.currency_name') }}</span>
                         </div>
                     </div>
                 </div>
@@ -195,7 +195,7 @@
                         </div>
                     </div>
                     <p class="text-gray-300 text-sm">
-                        Reducing the circulation supply of $RTX increases scarcity and supports the minting, enhancing the value of the entire ecosystem and stability of RTX token.
+                        Reducing the circulation supply of ${{ config('app.currency_name') }} increases scarcity and supports the minting, enhancing the value of the entire ecosystem and stability of {{ config('app.currency_name') }} token.
                     </p>
                 </div>
 
@@ -229,7 +229,7 @@
                         </div>
                     </div>
                     <p class="text-gray-300 text-sm">
-                        RTX rewards from transaction fees of 1% from total 6% transaction fees are secured and provided to the best person who performs monthly in the Orbit Community.
+                        {{ config('app.currency_name') }} rewards from transaction fees of 1% from total 6% transaction fees are secured and provided to the best person who performs monthly in the Orbit Community.
                     </p>
                 </div>
             </div>

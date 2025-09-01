@@ -351,7 +351,7 @@
                         <div class="tree_rang">{{$value['my_direct']}}</div>
                         <div class="tree_rang">${{number_format($data['rtxPrice'] * $value['team_investment'],2)}}</div>
                         <div class="tree_rang">${{number_format($data['rtxPrice'] * $value['direct_investment'],2)}}</div>
-                        <div class="tree_usd">{{number_format($value['totalInvestment'], 2)}} RTX</div>
+                        <div class="tree_usd">{{number_format($value['totalInvestment'], 2)}} {{ config('app.currency_name') }}</div>
                     </div>
                 </li>
                 @endforeach
@@ -480,7 +480,7 @@
                                                 <div class="tree_rang">` + data['data'][i]['my_direct'] + `</div>
                                                 <div class="tree_rang">$` + parseFloat(data['data'][i]['team_investment'] * data['rtxPrice']).toFixed(2) + `</div>
                                                 <div class="tree_rang">$` + parseFloat(data['data'][i]['direct_investment'] * data['rtxPrice']).toFixed(2) + `</div>
-                                                <div class="tree_usd">` + parseFloat(data['data'][i]['totalInvestment']).toFixed(2) + ` RTX</div>
+                                                <div class="tree_usd">` + parseFloat(data['data'][i]['totalInvestment']).toFixed(2) + ` {{ config('app.currency_name') }}</div>
                                              </div>
                                           </li>
                                        </ul>`

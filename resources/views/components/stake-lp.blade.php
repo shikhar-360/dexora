@@ -10,7 +10,7 @@
             @if(isset($data['last_stake_days']))
             <div>
                 <p class="text-sm text-gray-400 mb-1">Staked Tokens</p>
-                <p class="text-xl font-bold text-[#845dcb]">{{$data['staked_amount']}} RTX</p>
+                <p class="text-xl font-bold text-[#845dcb]">{{$data['staked_amount']}} {{ config('app.currency_name') }}</p>
                 <p class="text-xs text-gray-500">≈ ${{$data['staked_amount'] * $data['rtxPrice']}}</p>
             </div>
             <div>
@@ -34,7 +34,7 @@
                     <div class="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
                     <p class="text-sm text-gray-400">Total Claimed Rewards</p>
                 </div>
-                <p class="text-lg font-semibold text-white">{{$data['claimed_rewards']}} RTX</p>
+                <p class="text-lg font-semibold text-white">{{$data['claimed_rewards']}} {{ config('app.currency_name') }}</p>
                 <p class="text-xs text-purple-400">Active user • rewards earned from LP Bonds</p>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <ul class="text-xs text-purple-300 space-y-1 list-disc list-inside">
                 <li>Higher rewards compared to single token staking</li>
                 <li>Earn from both income and staking rewards</li>
-                <li>Minimum stake: 1 RTX</li>
+                <li>Minimum stake: 1 {{ config('app.currency_name') }}</li>
             </ul>
             <ul class="text-xs text-purple-300 space-y-1 list-disc list-inside">
                 <li>1-day lock period for enhanced security</li>
@@ -72,7 +72,7 @@
                 @csrf
                 <div class="bg-[#20202a] rounded-lg p-4">
                     <div class="flex justify-between text-sm"><span class="text-gray-400">Available Balance:</span><span class="text-white font-medium availableRTX" id="availableRTX">0 USDT</span></div>
-                    <div class="flex justify-between text-sm"><span class="text-gray-400">RTX Price</span><span class="text-white font-medium">${{$data['rtxPrice']}}</span></div>
+                    <div class="flex justify-between text-sm"><span class="text-gray-400">{{ config('app.currency_name') }} Price</span><span class="text-white font-medium">${{$data['rtxPrice']}}</span></div>
                     <!-- <div class="flex justify-between text-sm"><span class="text-gray-400">USDT Allowance</span><span class="text-white font-medium">Insufficient</span></div> -->
                 </div>
                 <div class="bg-blue-900/20 border border-blue-700/30 rounded-lg p-4 mb-4">
@@ -145,7 +145,7 @@
                     </div>
                 </div> -->
                 <div class="bg-purple-900/20 border border-purple-700/30 rounded-lg p-3 mb-6">
-                    <p class="text-xs text-purple-400"><strong>LP Creation Process:</strong> 50% of your USDT will be used to buy RTX tokens, then both assets are combined to create LP tokens. Minimum 1 USDT. Mandatory lock period of 360 days. Higher rewards than single token staking.</p>
+                    <p class="text-xs text-purple-400"><strong>LP Creation Process:</strong> 50% of your USDT will be used to buy {{ config('app.currency_name') }} tokens, then both assets are combined to create LP tokens. Minimum 1 USDT. Mandatory lock period of 360 days. Higher rewards than single token staking.</p>
                 </div>
                 <div class="flex gap-3">
                     <input type="hidden" name="transaction_hash" id="transaction_hash">
@@ -289,7 +289,7 @@
         }
 
         if (amount < 1) {
-            showToast("error", "Minimum Investment Amount is 1 RTX.");
+            showToast("error", "Minimum Investment Amount is 1 {{ config('app.currency_name') }}.");
             btn.disabled = false;
             return;
         }
