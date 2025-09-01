@@ -13,12 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          extensions: mbstring, bcmath, pdo_mysql
-
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
@@ -34,24 +28,10 @@ jobs:
               git pull origin main
             fi
 
-            # Install PHP dependencies without dev packages
+            # Run PHP commands on server (server already has PHP/Composer)
             composer install --no-dev --optimize-autoloader
-
-            # Cache Laravel configuration, routes, and views
             php artisan config:cache
             php artisan route:cache
             php artisan view:cache
 
-            # Optional: Run migrations manually when needed
-            echo "✅ Deployment complete. Run 'php artisan migrate --force' manually if database changes are required."
-
-      # Uncomment for Slack notifications
-      # - name: Notify Slack
-      #   uses: slackapi/slack-github-action@v1.23.0
-      #   with:
-      #     payload: |
-      #       {
-      #         "text": "✅ Deployment to *${{ github.ref_name }}* succeeded."
-      #       }
-      #   env:
-      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+            echo "Deployment complete. Run 'php artisan migrate --force' manually if database changes are required."
