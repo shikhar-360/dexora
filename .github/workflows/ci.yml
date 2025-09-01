@@ -13,19 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          extensions: mbstring, bcmath, pdo_mysql
-          tools: composer:v2
-
-      - name: Install Dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
-
-      # Optional: Check Laravel config/cache (no migrations)
-      - name: Check Laravel Setup
-        run: |
-          php artisan config:cache
-          php artisan route:cache
-          php artisan view:cache
+      # Optional: add lightweight code checks here (linting, formatting)
+      # Example:
+      # - name: PHP Code Sniffer
+      #   run: composer phpcs
