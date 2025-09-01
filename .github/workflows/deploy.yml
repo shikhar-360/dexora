@@ -3,13 +3,17 @@ name: CD - Laravel Deploy
 # Trigger only when a PR to develop/main is closed
 on:
   pull_request:
+  pull_request:
     branches:
       - develop
       - main
     types: [closed]
+    types: [closed]
 
 jobs:
   deploy:
+    # Only run if the PR was merged (not just closed)
+    if: github.event.pull_request.merged == true
     # Only run if the PR was merged (not just closed)
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
@@ -24,25 +28,15 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-<<<<<<< HEAD
             BRANCH="${GITHUB_REF##*/}"
             echo "Deploying merged PR to branch $BRANCH..."
 
             if [ "$BRANCH" = "develop" ]; then
-=======
-            echo "Deploying branch ${GITHUB_REF##*/}..."
-
-            if [ "${GITHUB_REF##*/}" = "develop" ]; then
->>>>>>> aecfdff (Update deploy.yml)
               cd /var/www/dexora-staging
               git fetch origin
               git checkout develop
               git reset --hard origin/develop
-<<<<<<< HEAD
             elif [ "$BRANCH" = "main" ]; then
-=======
-            elif [ "${GITHUB_REF##*/}" = "main" ]; then
->>>>>>> aecfdff (Update deploy.yml)
               cd /var/www/dexora-production
               git fetch origin
               git checkout main
@@ -55,8 +49,4 @@ jobs:
             php artisan route:cache
             php artisan view:cache
 
-<<<<<<< HEAD
-            echo "✅ Deployment complete. Run 'php artisan migrate --force' manually if needed."
-=======
-            echo "✅ Deployment complete. Run 'php artisan migrate --force' manually if database changes are required."
->>>>>>> aecfdff (Update deploy.yml)
+            echo "Deployment complete. Run 'php artisan migrate --force' manually if needed."
