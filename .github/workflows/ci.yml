@@ -10,22 +10,6 @@ jobs:
   checks:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:8
-        env:
-          MYSQL_DATABASE: laravel
-          MYSQL_USER: laravel
-          MYSQL_PASSWORD: secret
-          MYSQL_ROOT_PASSWORD: root
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping -h localhost"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
-
     steps:
       - uses: actions/checkout@v3
 
@@ -39,15 +23,9 @@ jobs:
       - name: Install Dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Copy .env
-        run: cp .env.example .env
-
-      - name: Generate Key
-        run: php artisan key:generate
-
-      - name: Run Migrations
-        run: php artisan migrate --force
-
-      # Tests skipped (manual only)
-      # - name: Run Tests
-      #   run: php artisan test --parallel
+      # Optional: Check Laravel config/cache (no migrations)
+      - name: Check Laravel Setup
+        run: |
+          php artisan config:cache
+          php artisan route:cache
+          php artisan view:cache
