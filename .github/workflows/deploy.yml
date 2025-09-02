@@ -3,17 +3,13 @@ name: CD - Laravel Deploy
 # Trigger only when a PR to develop/main is closed
 on:
   pull_request:
-  pull_request:
     branches:
       - develop
       - main
     types: [closed]
-    types: [closed]
 
 jobs:
   deploy:
-    # Only run if the PR was merged (not just closed)
-    if: github.event.pull_request.merged == true
     # Only run if the PR was merged (not just closed)
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
