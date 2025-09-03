@@ -84,12 +84,12 @@
                 altText="Total Supply" />
 
             <x-stat-box
-                title="RTX Price"
+                title="{{ config('app.currency_name') }} Price"
                 value="${{ number_format($data['rtxPrice'], 2) }}"
                 bgColor="#F2A0FF"
                 borderColor="#F2A0FF"
                 imageSrc="{{ asset('assets/images/icons/rtxprice.webp') }}"
-                altText="RTX Price" />
+                altText="{{ config('app.currency_name') }} Price" />
 
             <x-stat-box
                 title="Liquidity Pool"
@@ -125,34 +125,34 @@
         image-src="{{ asset('assets/images/icons/withdraw.webp') }}"
         title="Total Claimed Bonus"
         :valuesDolur="'$' . number_format($data['rtxPrice'] * $data['total_withdraw'], 3)"
-        :values="number_format($data['total_withdraw'], 3) . ' RTX'"
+        :values="number_format($data['total_withdraw'], 3)  . ' ' . config('app.currency_name')"
         flex="flex-col" />
 
     <x-item-box
         image-src="{{ asset('assets/images/icons/staked-amount.webp') }}"
         title="Staked Amount"
         :valuesDolur="'$' . number_format($data['rtxPrice'] * $data['activeStake'], 3)"
-        :values="number_format($data['activeStake'], 3) . ' RTX'"
+        :values="number_format($data['activeStake'], 3)  . ' ' . config('app.currency_name')"
         flex="flex-col" />
 
     <x-item-box
         image-src="{{ asset('assets/images/icons/compounded-amount.webp') }}"
         title="Compounded Amount"
         :valuesDolur="'$' . number_format($data['rtxPrice'] * ($data['compound_amount'] + $data['self_investment'] - $data['total_unstake_amount']), 3)"
-        :values="number_format(($data['compound_amount'] + $data['self_investment'] - $data['total_unstake_amount']), 3) . ' RTX'"
+        :values="number_format(($data['compound_amount'] + $data['self_investment'] - $data['total_unstake_amount']), 3)  . ' ' . config('app.currency_name')"
         flex="flex-col" />
 
     <x-item-box
         image-src="{{ asset('assets/images/icons/total-income.webp') }}"
         title="Last Stake Bonus"
         :valuesDolur="'$' . number_format($data['rtxPrice'] * $data['user']['daily_roi'], 3)"
-        :values="number_format($data['user']['daily_roi'], 3) . ' RTX'"
+        :values="number_format($data['user']['daily_roi'], 3)  . ' ' . config('app.currency_name')"
         flex="flex-col" />
 
     <x-item-box
         image-src="{{ asset('assets/images/icons/upline-bonus.webp') }}"
         title="Upline Bonus"
-        :values="number_format($data['user']['direct_income'], 3) . ' RTX'"
+        :values="number_format($data['user']['direct_income'], 3)  . ' ' . config('app.currency_name')"
         :valuesDolur="'$' . number_format($data['rtxPrice'] * $data['user']['direct_income'], 3)"
         flex="flex-col" />
 
@@ -166,7 +166,7 @@
         image-src="{{ asset('assets/images/icons/direct-investment.webp') }}"
         title="Direct Investment"
         :valuesDolur="'$' . number_format($data['rtxPrice'] * $data['user']['direct_business'], 3)"
-        :values="number_format($data['user']['direct_business'], 3) . ' RTX'"
+        :values="number_format($data['user']['direct_business'], 3)  . ' ' . config('app.currency_name')"
         flex="flex-col" />
 
     <x-item-box
@@ -179,49 +179,49 @@
         image-src="{{ asset('assets/images/icons/total-team-investment.webp') }}"
         title="Team Investment"
         :valuesDolur="'$' . number_format(($data['rtxPrice'] * ($data['user']['my_business'] + $data['user']['strong_business'] + $data['user']['weak_business'])), 3)"
-        :values="number_format(($data['user']['my_business'] + $data['user']['strong_business'] + $data['user']['weak_business']), 3) . ' RTX'"
+        :values="number_format(($data['user']['my_business'] + $data['user']['strong_business'] + $data['user']['weak_business']), 3)  . ' ' . config('app.currency_name')"
         flex="flex-col" />
 
     <x-item-box
         image-src="{{ asset('assets/images/icons/club-bonus.webp') }}"
         title="Club Bonus"
         :valuesDolur="'$' . number_format($data['rtxPrice'] * $data['user']['club_bonus'], 3)"
-        :values="number_format($data['user']['club_bonus'], 3) . ' RTX'"
+        :values="number_format($data['user']['club_bonus'], 3)  . ' ' . config('app.currency_name')"
         flex="flex-col" />
 
     <x-item-box
         image-src="{{ asset('assets/images/icons/reward-bonus.webp') }}"
         title="Reward Bonus"
         :valuesDolur="'$' . number_format($data['rtxPrice'] * $data['user']['reward_bonus'], 3)"
-        :values="number_format($data['user']['reward_bonus'], 3) . ' RTX'"
+        :values="number_format($data['user']['reward_bonus'], 3)  . ' ' . config('app.currency_name')"
         flex="flex-col" />
 
     <x-item-box
         image-src="{{ asset('assets/images/icons/star-bonus.webp') }}"
         title="Star Bonus"
         :valuesDolur="'$' . number_format($data['rtxPrice'] * $data['user']['rank_bonus'], 3)"
-        :values="number_format($data['user']['rank_bonus'], 3) . ' RTX'"
+        :values="number_format($data['user']['rank_bonus'], 3)  . ' ' . config('app.currency_name')"
         flex="flex-col" />
 
     <x-item-box
         image-src="{{ asset('assets/images/icons/level-bonus.webp') }}"
         title="Level Income"
         :valuesDolur="'$' . number_format($data['rtxPrice'] * $data['user']['level_income'], 3)"
-        :values="number_format($data['user']['level_income'], 3) . ' RTX'"
+        :values="number_format($data['user']['level_income'], 3)  . ' ' . config('app.currency_name')"
         flex="flex-col" />
 
     <x-item-box
         image-src="{{ asset('assets/images/icons/daily-pool.webp') }}"
         title="Daily Pool Bonus"
         :valuesDolur="'$' . number_format($data['rtxPrice'] * $data['dailyPoolWinners'], 3)"
-        :values="number_format($data['dailyPoolWinners'], 3) . ' RTX'"
+        :values="number_format($data['dailyPoolWinners'], 3)  . ' ' . config('app.currency_name')"
         flex="flex-col" />
 
     <x-item-box
         image-src="{{ asset('assets/images/icons/monthly-pool.webp') }}"
         title="Monthly Pool Bonus"
         :valuesDolur="'$' . number_format($data['rtxPrice'] * $data['monthlyPoolWinners'], 3)"
-        :values="number_format($data['monthlyPoolWinners'], 3) . ' RTX'"
+        :values="number_format($data['monthlyPoolWinners'], 3)  . ' ' . config('app.currency_name')"
         flex="flex-col" />
 </div>
 
@@ -329,7 +329,7 @@
                 lable="Strong Leg Business"
                 title="Highest performing leg"
                 :valuesDolur="'$' . number_format(($data['rtxPrice'] * ($data['firstLeg'])), 3)"
-                :value="($data['firstLeg']) . 'RTX'"
+                :value="($data['firstLeg'])  . ' ' . config('app.currency_name')"
                 bgColor="#009688"
                 borderColor="#009688"
                 imageSrc="{{ asset('assets/images/icons/rank.svg') }}" />
@@ -338,7 +338,7 @@
                 lable="Other Legs"
                 title="Development opportunity"
                 :valuesDolur="'$' . number_format(($data['rtxPrice'] * ($data['otherLeg'])), 3)"
-                :value="($data['otherLeg']) . 'RTX'"
+                :value="($data['otherLeg'])  . ' ' . config('app.currency_name')"
                 bgColor="#93695a"
                 borderColor="#93695a"
                 imageSrc="{{ asset('assets/images/icons/teamgrowthlaps.svg') }}" />

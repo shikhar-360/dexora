@@ -187,4 +187,5 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
+    'currency_name' => 'DORA',
 ];
