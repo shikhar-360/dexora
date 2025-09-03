@@ -7,7 +7,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5 overflow-hidden">
         <x-stat-box
             title="Direct Team Investment"
-            value="{{ number_format($data['user']['direct_business'], 2) }} RTX"
+            value="{{ number_format($data['user']['direct_business'], 2) }} {{ config('app.currency_name') }}"
             rtxval="${{ number_format($data['rtxPrice'] * $data['user']['direct_business'], 2) }}"
             bgColor="#0BF4C8"
             borderColor="#0BF4C8"
@@ -15,7 +15,7 @@
 
         <x-stat-box
             title="Total Team Investment"
-            value="{{ number_format($data['user']['my_business'], 2) }} RTX"
+            value="{{ number_format($data['user']['my_business'], 2) }} {{ config('app.currency_name') }}"
             rtxval="${{ number_format($data['rtxPrice'] * $data['user']['my_business'], 2) }}"
             bgColor="#FAD85D"
             borderColor="#FAD85D"
@@ -45,9 +45,9 @@
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Wallet Address</span></th>
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Direct</span></th>
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Team</span></th>
-                                <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">RTX</span></th>
+                                <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">{{ config('app.currency_name') }}</span></th>
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Business($)</span></th>
-                                <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Stake RTX</span></th>
+                                <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Stake {{ config('app.currency_name') }}</span></th>
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Stake ($)</span></th>
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Registration Date</span></th>
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Stake Date</span></th>
@@ -70,7 +70,7 @@
                                 <td class="text-nowrap px-4 py-2 text-center">{{ $value['my_team'] }}</td>
                                 <td class="text-nowrap px-4 py-2 text-center">{{ number_format($value['my_business'], 2) }}</td>
                                 <td class="text-nowrap px-4 py-2 text-center">${{ number_format($data['rtxPrice'] * $value['my_business'], 2) }}</td>
-                                <td class="text-nowrap px-4 py-2 text-center text-[#30b8f5]">{{ number_format($value['totalPackage'], 2) }} RTX</td>
+                                <td class="text-nowrap px-4 py-2 text-center text-[#30b8f5]">{{ number_format($value['totalPackage'], 2) }} {{ config('app.currency_name') }}</td>
                                 <td class="text-nowrap px-4 py-2 text-center">${{ number_format($data['rtxPrice'] * $value['totalPackage'], 2) }}</td>
                                 <td class="text-nowrap px-4 py-2 text-center">{{ \Carbon\Carbon::parse($value['created_on'], 'UTC')->setTimezone('Europe/London')->format('d-m H:i') }}</td>
                                 <td class="text-nowrap px-4 py-2 text-center">@if($value['currentPackageDate'] != '-') {{ \Carbon\Carbon::parse($value['currentPackageDate'], 'UTC')->setTimezone('Europe/London')->format('d-m H:i') }} @else - @endif</td>
@@ -86,7 +86,7 @@
                         </tbody>
                     </table>
                     <h3>Total Business($) : {{ number_format($totalBusiness,3) }}</h3>
-                    <h3>Total Stake RTX: {{  number_format($totalStake,3) }} RTX</h3>
+                    <h3>Total Stake {{ config('app.currency_name') }}: {{  number_format($totalStake,3) }} {{ config('app.currency_name') }}</h3>
                 </div>
             </div>
             <div class="hidden" id="active_directs" role="tabpanel" aria-labelledby="table-active_directs">
@@ -99,9 +99,9 @@
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Wallet Address</span></th>
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Direct</span></th>
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Team</span></th>
-                                <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">RTX</span></th>
+                                <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">{{ config('app.currency_name') }}</span></th>
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Business($)</span></th>
-                                <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Stake RTX</span></th>
+                                <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Stake {{ config('app.currency_name') }}</span></th>
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Stake ($)</span></th>
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Registration Date</span></th>
                                 <th class="px-4 py-2 text-center text-center"><span class="text-nowrap w-full block text-center">Stake Date</span></th>
@@ -125,7 +125,7 @@
                                 <td class="text-nowrap px-4 py-2 text-center">{{ $value['my_team'] }}</td>
                                 <td class="text-nowrap px-4 py-2 text-center">{{ number_format($value['my_business'], 2) }}</td>
                                 <td class="text-nowrap px-4 py-2 text-center">${{ number_format($data['rtxPrice'] * $value['my_business'], 2) }}</td>
-                                <td class="text-nowrap px-4 py-2 text-center text-[#30b8f5]">{{ number_format($value['totalPackage'], 2) }} RTX</td>
+                                <td class="text-nowrap px-4 py-2 text-center text-[#30b8f5]">{{ number_format($value['totalPackage'], 2) }} {{ config('app.currency_name') }}</td>
                                 <td class="text-nowrap px-4 py-2 text-center">${{ number_format($data['rtxPrice'] * $value['totalPackage'], 2) }}</td>
                                 <td class="text-nowrap px-4 py-2 text-center">{{ \Carbon\Carbon::parse($value['created_on'], 'UTC')->setTimezone('Europe/London')->format('d-m H:i') }}</td>
                                 <td class="text-nowrap px-4 py-2 text-center">@if($value['currentPackageDate'] != '-') {{ \Carbon\Carbon::parse($value['currentPackageDate'], 'UTC')->setTimezone('Europe/London')->format('d-m H:i') }} @else - @endif</td>
@@ -142,7 +142,7 @@
                         </tbody>
                     </table>
                     <h3>Total Business($) : {{  number_format($totalBusinesss,3)}}</h3>
-                    <h3>Total Stake RTX : {{  number_format($totalStakes,3) }} RTX</h3>
+                    <h3>Total Stake {{ config('app.currency_name') }} : {{  number_format($totalStakes,3) }} {{ config('app.currency_name') }}</h3>
                 </div>
             </div>
         </div>
