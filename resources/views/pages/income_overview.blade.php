@@ -8,7 +8,7 @@
     <x-stat-box
         title="Stake Bonus"
         valuesDolur="${{ number_format($data['user']['roi_income'] * $data['rtxPrice'], 3) }}"
-        :value="number_format($data['user']['roi_income'], 3) . ' RTX'"
+        :value="number_format($data['user']['roi_income'], 3)   . ' ' . config('app.currency_name')"
         bgColor="#FAD85D"
         borderColor="#FAD85D"
         imageSrc="{{ asset('assets/images/income-icons/profit-sharing.webp') }}" />
@@ -16,7 +16,7 @@
     <x-stat-box
         title="Level Bonus"
         valuesDolur="${{ number_format($data['user']['level_income'] * $data['rtxPrice'], 3) }}"
-        :value="number_format($data['user']['level_income'], 3) . ' RTX'"
+        :value="number_format($data['user']['level_income'], 3)   . ' ' . config('app.currency_name')"
         bgColor="#ffa0b7"
         borderColor="#ffa0b7"
         imageSrc="{{ asset('assets/images/income-icons/level-income.webp') }}" />
@@ -24,7 +24,7 @@
     <x-stat-box
         title="Upline Bonus"
         valuesDolur="${{ number_format($data['user']['direct_income'] * $data['rtxPrice'], 3) }}"
-        :value="number_format($data['user']['direct_income'], 3) . ' RTX'"
+        :value="number_format($data['user']['direct_income'], 3)   . ' ' . config('app.currency_name')"
         bgColor="#F2A0FF"
         borderColor="#F2A0FF"
         imageSrc="{{ asset('assets/images/income-icons/rank-income.webp') }}" />
@@ -32,7 +32,7 @@
     <x-stat-box
         title="Star Bonus"
         valuesDolur="${{ number_format($data['user']['rank_bonus'] * $data['rtxPrice'], 3) }}"
-        :value="number_format($data['user']['rank_bonus'], 3) . ' RTX'"
+        :value="number_format($data['user']['rank_bonus'], 3)   . ' ' . config('app.currency_name')"
         bgColor="#aea0ff"
         borderColor="#aea0ff"
         imageSrc="{{ asset('assets/images/income-icons/leadership.webp') }}" />
@@ -40,7 +40,7 @@
     <x-stat-box
         title="Club Bonus"
         valuesDolur="${{ number_format($data['user']['club_bonus'] * $data['rtxPrice'], 3) }}"
-        :value="number_format($data['user']['club_bonus'], 3) . ' RTX'"
+        :value="number_format($data['user']['club_bonus'], 3)   . ' ' . config('app.currency_name')"
         bgColor="#ffe1a0"
         borderColor="#ffe1a0"
         imageSrc="{{ asset('assets/images/income-icons/ib-income.webp') }}" />
@@ -48,7 +48,7 @@
     <x-stat-box
         title="Reward Bonus"
         valuesDolur="${{ number_format($data['user']['reward_bonus'] * $data['rtxPrice'], 3) }}"
-        :value="number_format($data['user']['reward_bonus'], 3) . ' RTX'"
+        :value="number_format($data['user']['reward_bonus'], 3)   . ' ' . config('app.currency_name')"
         bgColor="#a0ffe4"
         borderColor="#a0ffe4"
         imageSrc="{{ asset('assets/images/icons/reward-bonus.webp') }}?v={{time()}}" />
@@ -56,7 +56,7 @@
     <x-stat-box
         title="Daily Pool Bonus"
         valuesDolur="${{ number_format($data['dailyPoolWinners'] * $data['rtxPrice'], 3) }}"
-        :value="number_format($data['dailyPoolWinners'], 3) . ' RTX'"
+        :value="number_format($data['dailyPoolWinners'], 3)   . ' ' . config('app.currency_name')"
         bgColor="#8bc34a"
         borderColor="#8bc34a"
         imageSrc="{{ asset('assets/images/icons/daily-pool.webp') }}?v={{time()}}" />
@@ -64,7 +64,7 @@
     <x-stat-box
         title="Monthly Pool Bonus"
         valuesDolur="${{ number_format($data['monthlyPoolWinners'] * $data['rtxPrice'], 3) }}"
-        :value="number_format($data['monthlyPoolWinners'], 3) . ' RTX'"
+        :value="number_format($data['monthlyPoolWinners'], 3)   . ' ' . config('app.currency_name')"
         bgColor="#ffa0e7"
         borderColor="#ffa0e7"
         imageSrc="{{ asset('assets/images/icons/monthly-pool.webp') }}" />
@@ -72,7 +72,7 @@
     <x-stat-box
         title="Total Income"
         valuesDolur="${{ number_format(($data['user']['direct_income'] + $data['user']['roi_income'] + $data['user']['level_income'] + $data['user']['rank_bonus'] + $data['user']['royalty'] + $data['user']['reward_bonus'] + $data['user']['club_bonus']) * $data['rtxPrice'], 3) }}"
-        :value="number_format(($data['user']['direct_income'] + $data['user']['roi_income'] + $data['user']['level_income'] + $data['user']['rank_bonus'] + $data['user']['royalty'] + $data['user']['reward_bonus'] + $data['user']['club_bonus']), 3) . ' RTX'"
+        :value="number_format(($data['user']['direct_income'] + $data['user']['roi_income'] + $data['user']['level_income'] + $data['user']['rank_bonus'] + $data['user']['royalty'] + $data['user']['reward_bonus'] + $data['user']['club_bonus']), 3)   . ' ' . config('app.currency_name')"
         bgColor="#03a9f4"
         borderColor="#03a9f4"
         imageSrc="{{ asset('assets/images/income-icons/total-invest.webp') }}" />

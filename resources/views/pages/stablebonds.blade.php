@@ -212,7 +212,7 @@
                     <!-- <x-item-box
                         imageSrc=""
                         title="Total Staked"
-                        :values="number_format($data['total_staked_amount'], 3) .' RTX'"
+                        :values="number_format($data['total_staked_amount'], 3)   . ' ' . config('app.currency_name')"
                         flex="flex-col"
                         imgHide="hidden"
                         bgColor="[#171531]" /> -->
@@ -220,7 +220,7 @@
                     <x-item-box
                         imageSrc=""
                         title="Your Staked"
-                        :values="number_format($data['staked_amount'], 3) .' RTX'"
+                        :values="number_format($data['staked_amount'], 3)   . ' ' . config('app.currency_name')"
                         flex="flex-col"
                         imgHide="hidden"
                         bgColor="[#171531]" />
@@ -228,7 +228,7 @@
                     <x-item-box
                         imageSrc=""
                         title="Compounded Stake"
-                        :values="number_format(($data['compound_amount'] - $data['total_unstake_amount']), 3) .' RTX'"
+                        :values="number_format(($data['compound_amount'] - $data['total_unstake_amount']), 3)   . ' ' . config('app.currency_name')"
                         flex="flex-col"
                         imgHide="hidden"
                         bgColor="[#171531]" />
@@ -236,7 +236,7 @@
                     <x-item-box
                         imageSrc=""
                         title="Generated ROI"
-                        :values="number_format($data['generated_roi'], 3) . ' RTX'"
+                        :values="number_format($data['generated_roi'], 3)   . ' ' . config('app.currency_name')"
                         flex="flex-col"
                         imgHide="hidden"
                         bgColor="[#171531]" />

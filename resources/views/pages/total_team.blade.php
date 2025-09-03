@@ -78,7 +78,7 @@
                                 @foreach ($data['data'] as $value)
                                     <tr class="border-b border-white/5 hover:bg-[#34333a]/20">
                                         <td class="px-4 py-4 text-sm text-gray-400">{{ $sr++ }}</td>
-                                        <td class="px-4 py-4 text-sm text-gray-400">{{ number_format($value['totalPackage'], 3) }} RTX</td>
+                                        <td class="px-4 py-4 text-sm text-gray-400">{{ number_format($value['totalPackage'], 3) }} {{ config('app.currency_name') }}</td>
                                         <td class="px-4 py-4 text-sm text-gray-400">${{ number_format($data['rtxPrice'] * $value['totalPackage'], 2) }}</td>
                                         <td class="px-4 py-4 text-sm text-gray-400">{{ substr($value['wallet_address'], 0, 6) }}...{{ substr($value['wallet_address'], -6) }}</td>
                                         <td class="px-4 py-4 text-sm text-gray-400">{{ $value['sponser_code'] }}</td>
