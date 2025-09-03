@@ -1,6 +1,5 @@
 name: CD - Laravel Deploy
 
-# Trigger only when a PR to develop/main is closed
 on:
   pull_request:
     branches:
@@ -10,7 +9,6 @@ on:
 
 jobs:
   deploy:
-    # Only run if the PR was merged (not just closed)
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
@@ -24,7 +22,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            BRANCH="${GITHUB_REF##*/}"
+            BRANCH="${{ github.base_ref }}"
             echo "Deploying merged PR to branch $BRANCH..."
 
             if [ "$BRANCH" = "develop" ]; then
@@ -39,10 +37,10 @@ jobs:
               git reset --hard origin/main
             fi
 
-            # Run PHP commands on server
+            # Run PHP commands in the correct directory
             composer install --no-dev --optimize-autoloader
             php artisan config:cache
             php artisan route:cache
             php artisan view:cache
 
-            echo "✅ Deployment complete. Run 'php artisan migrate --force' manually if needed."
+            echo "Shikhar-360 said Deployment complete. Run 'php artisan migrate --force' manually if needed."
