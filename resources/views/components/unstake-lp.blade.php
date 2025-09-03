@@ -79,11 +79,11 @@ $isUnlocked = $now->greaterThanOrEqualTo($unlockDate);
         <div class="flex justify-between items-center">
             <div>
                 <p class="text-sm text-gray-400">Total You'll Receive</p>
-                <p class="text-xl font-bold text-white">{{ number_format(($data['compound_amount'] - $data['total_unstake_amount']), 3) }} RTX</p>
+                <p class="text-xl font-bold text-white">{{ number_format(($data['compound_amount'] - $data['total_unstake_amount']), 3) }} {{ config('app.currency_name') }}</p>
                     <p class="text-sm text-gray-400">${{ number_format((($data['compound_amount'] - $data['total_unstake_amount']) ?? 0) * ($data['rtxPrice'] ?? 0), 3) }} USD</p>
             </div>
             <div class="text-right">
-                <p class="text-sm text-red-400">Total Fees: {{ number_format((($data['compound_amount'] - $data['total_unstake_amount']) ?? 0) * 0.06, 3) }} RTX</p>
+                <p class="text-sm text-red-400">Total Fees: {{ number_format((($data['compound_amount'] - $data['total_unstake_amount']) ?? 0) * 0.06, 3) }} {{ config('app.currency_name') }}</p>
                 <p class="text-xs text-gray-500">6% applied to both principal and returns</p>
             </div>
         </div>
